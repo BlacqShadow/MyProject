@@ -41,6 +41,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Project2\HuffmanCoding.cs" />
+    <Compile Include="Project2\Tree.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Utils\DataSerializer.cs" />
     <Compile Include="Week01\Vector.cs" />
@@ -51,6 +52,8 @@
     <Compile Include="Project1\Task01\Vector.cs" />
     <Compile Include="Project1\Task01\DataSerializer.cs" />
     <Compile Include="Project1\Task02\SetClass.cs" />
+    <Compile Include="Week08\BinarySearchTree.cs" />
+    <Compile Include="Week08\TraversalMode.cs" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
