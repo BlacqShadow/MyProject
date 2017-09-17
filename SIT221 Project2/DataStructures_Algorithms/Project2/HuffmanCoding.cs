@@ -17,7 +17,7 @@ namespace DataStructures_Algorithms.Project2
 
         private Vector<char> rawData;
         private Dictionary<char, int> charWeights;
-        private List<Dictionary<char, int>> forests; 
+        private List<Tree> trees; 
         /// <summary>
         /// Takes in a vector to encode the data contained using huffman coding
         /// </summary>
@@ -31,13 +31,43 @@ namespace DataStructures_Algorithms.Project2
             return null;
         }
 
-        // Build the tree after aquiring weights
+        // After the frequency of the characters are acquired 
         private void buildTree()
         {
-            for(int i = 0; i < charWeights.Count; i++)
+            // Check to see if the character weights array is empty.
+            // Get a list of trees. 
+            if(charWeights != null)
             {
-                forests.Add(new Tree())
+                trees = new List<Tree>();
+                foreach (KeyValuePair<char, int> entry in charWeights)
+                {
+                    trees.Add(new Tree(entry.Key,entry.Value));
+                }
+
+                createHuffmanTree(trees);
             }
+        }
+
+        private void createHuffmanTree(List<Tree> trees) 
+        {
+            // Get the lowest two trees and add them together
+            // How do you get the lowest two trees, iterate through all the tress and check the minimum weight value
+            Tree t1, t2;
+
+            // Sort list of trees
+            while(trees.Count() > 1)
+            {
+				List<Tree> sortedTrees = trees.OrderBy(o => o.root.weight).ToList();
+                t1 = sortedTrees.First();
+                sortedTrees.Remove(t1);
+                trees.Remove(t1);
+                t2 = sortedTrees.First();
+                sortedTrees.Remove(t2);
+                trees.Remove(t2);
+                Tree t3 = Tree.addTrees(t1, t2);
+                trees.Add(t3);
+            }
+
         }
 
 
