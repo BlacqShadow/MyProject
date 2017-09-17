@@ -11,8 +11,25 @@ namespace DataStructures_Algorithms.Project2
         public Node LeftChild { get; set; }
         public Node RightChild { get; set; }
 
-        public char Value { get; set; }
+        public char value;
+
+        public char Value
+        {
+            get
+            {
+                return value;
+            }
+            set
+            {
+                this.value = value;
+            }
+        }
         public int weight { get; set; }
+        public Node()
+        {
+            value = '\0';
+            weight = 0;
+        }
     }
     public class Tree
     {
@@ -21,6 +38,7 @@ namespace DataStructures_Algorithms.Project2
         // Constructor for the resulting tree 
         public Tree(int weight)
         {
+            root = new Node();
             root.Value = '\0';
             root.weight = weight;
         }
@@ -28,6 +46,7 @@ namespace DataStructures_Algorithms.Project2
         // Constructor for inital character trees. 
         public Tree(char value, int weight)
         {
+            root = new Node();
             root.Value = value;
             root.weight = weight;
         }
