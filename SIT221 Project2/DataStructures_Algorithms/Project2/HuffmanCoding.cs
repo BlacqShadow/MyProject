@@ -17,7 +17,10 @@ namespace DataStructures_Algorithms.Project2
 
         private Vector<char> rawData;
         private Dictionary<char, int> charWeights;
-        private List<Tree> trees; 
+        private List<Tree> trees;
+        private Vector<int> _encodedData;
+
+
         /// <summary>
         /// Takes in a vector to encode the data contained using huffman coding
         /// </summary>
@@ -28,9 +31,34 @@ namespace DataStructures_Algorithms.Project2
             rawData = input;
             getWeights();
             buildTree();
+            //_encodedData = getEncodedData();
             return null;
         }
 
+        /*
+        *   Using Depth First Traversal Method
+        *   Put the encoded data in a vector
+        */
+        private Vector<int> getEncodedData()
+        {
+            Stack<Node> s = new Stack<Node>();
+            s.Push(trees[0].root);
+
+            while (s.Count > 0)
+            {
+                Node current = s.Pop();
+                if (current.RightChild != null)
+                    s.Push(current.RightChild);
+                if (current.LeftChild != null)
+                    s.Push(current.LeftChild);
+                Console.WriteLine(current.Value);
+
+            }
+
+            return
+        }
+
+        #region Building the huffman tree from raw data
         // After the frequency of the characters are acquired 
         private void buildTree()
         {
@@ -70,7 +98,6 @@ namespace DataStructures_Algorithms.Project2
                 Tree t3 = Tree.addTrees(t1, t2);
                 trees.Add(t3);
             }
-
         }
 
 
@@ -93,6 +120,8 @@ namespace DataStructures_Algorithms.Project2
                 }
             }
         }
+        #endregion
+
 
 
 
