@@ -41,6 +41,9 @@ namespace DataStructures_Algorithms.Project2
                 trees = new List<Tree>();
                 foreach (KeyValuePair<char, int> entry in charWeights)
                 {
+                    // Check to see if it is a null entry
+                    if (entry.Key == '\0')
+                        continue;
                     trees.Add(new Tree(entry.Key,entry.Value));
                 }
 
