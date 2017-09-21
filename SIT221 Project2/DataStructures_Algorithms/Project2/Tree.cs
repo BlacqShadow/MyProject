@@ -6,13 +6,29 @@ using System.Threading.Tasks;
 
 namespace DataStructures_Algorithms.Project2
 {
+    // Represents the edge, the node belongs to i.e. Left or Right
+    public enum Edge
+    {
+        Left,
+        Right
+    }
     public class Node
     {
         public Node LeftChild { get; set; }
         public Node RightChild { get; set; }
 
-        public char value;
-
+        /*
+        *   Member Variables
+        */
+        private char value;
+        private bool _visited;
+        public Edge edge; 
+        #region Properties
+        public bool Visited
+        {
+            get { return _visited; }
+            set { _visited = value; }
+        }
         public char Value
         {
             get
@@ -25,10 +41,14 @@ namespace DataStructures_Algorithms.Project2
             }
         }
         public int weight { get; set; }
+        #endregion
+
         public Node()
         {
             value = '\0';
             weight = 0;
+            Visited = false;
+            
         }
     }
     public class Tree

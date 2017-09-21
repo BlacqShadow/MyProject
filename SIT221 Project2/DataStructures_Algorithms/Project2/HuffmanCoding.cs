@@ -17,8 +17,9 @@ namespace DataStructures_Algorithms.Project2
 
         private Vector<char> rawData;
         private Dictionary<char, int> charWeights;
+        private Dictionary<char, string> encodingScheme;
         private List<Tree> trees;
-        private Vector<int> _encodedData;
+        private Vector<string> _encodedData;
 
 
         /// <summary>
@@ -39,24 +40,33 @@ namespace DataStructures_Algorithms.Project2
         *   Using Depth First Traversal Method
         *   Put the encoded data in a vector
         */
-        private Vector<int> getEncodedData()
-        {
-            Stack<Node> s = new Stack<Node>();
-            s.Push(trees[0].root);
+        //private Vector<string> getEncodedData()
+        //{
+        //    encodingScheme = new Dictionary<char, string>();
 
-            while (s.Count > 0)
-            {
-                Node current = s.Pop();
-                if (current.RightChild != null)
-                    s.Push(current.RightChild);
-                if (current.LeftChild != null)
-                    s.Push(current.LeftChild);
-                Console.WriteLine(current.Value);
+        //    Stack<Node> s = new Stack<Node>();
 
-            }
+        //    Push the complete tree at node 0 onto the stack
+        //    s.Push(trees[0].root);
+        //    string value = "";
+        //    while (s.Count > 0)
+        //    {
+        //        Node current = s.Pop();
+        //        current.Visited = true;
+        //        if (current.LeftChild == null && current.RightChild == null)
+        //        {
+        //            encodingScheme.Add(current.Value, value);
+        //            value = "";
+        //        }
+        //        else
+        //        {
+        //            if (current.LeftChild =)
+        //        }
 
-            return
-        }
+        //    }
+
+        //    return binary;
+        //}
 
         #region Building the huffman tree from raw data
         // After the frequency of the characters are acquired 
@@ -83,19 +93,21 @@ namespace DataStructures_Algorithms.Project2
         {
             // Get the lowest two trees and add them together
             // How do you get the lowest two trees, iterate through all the tress and check the minimum weight value
-            Tree t1, t2;
+            Tree Left, Right;
 
             // Sort list of trees
             while(trees.Count() > 1)
             {
 				List<Tree> sortedTrees = trees.OrderBy(o => o.root.weight).ToList();
-                t1 = sortedTrees.First();
-                sortedTrees.Remove(t1);
-                trees.Remove(t1);
-                t2 = sortedTrees.First();
-                sortedTrees.Remove(t2);
-                trees.Remove(t2);
-                Tree t3 = Tree.addTrees(t1, t2);
+                Left = sortedTrees.First();
+                Left.root.edge = Edge.Left;
+                sortedTrees.Remove(Left);
+                trees.Remove(Left);
+                Right = sortedTrees.First();
+                Right.root.edge = Edge.Right;
+                sortedTrees.Remove(Right);
+                trees.Remove(Right);
+                Tree t3 = Tree.addTrees(Left, Right);
                 trees.Add(t3);
             }
         }
