@@ -22,7 +22,7 @@ namespace Runner
 
             // load input data
             Vector<char> inputData = null;
-            DataSerializer<char>.LoadVectorFromTextFile(inputFileName, ref inputData);
+            DataSerializer<char>.LoadVectorFromAnyFile(inputFileName, ref inputData);
 
             // create a coder
             HuffmanCoding coder = new HuffmanCoding();

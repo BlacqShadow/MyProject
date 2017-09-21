@@ -35,11 +35,13 @@ namespace DataStructures_Algorithms.Project1
             string line = "";
             using (StreamReader sr = new StreamReader(path))
             {
-                while ((line = sr.ReadLine()) != null)
-                {
-                    //This would work only for primitive types
-                    vector.Add((T)Convert.ChangeType(line, typeof(T)));
-                }
+                // Change this function to 
+                //while ((line = sr.ReadLine()) != null)
+                //{
+                //    //This would work only for primitive types
+                //    vector.Add((T)Convert.ChangeType(line, typeof(T)));
+                //}
+
             }
         }
 
@@ -52,6 +54,21 @@ namespace DataStructures_Algorithms.Project1
                 {
                     sw.WriteLine(vector[i]);              
                 }
+            }
+        }
+
+        public static void LoadVectorFromAnyFile(string path, ref Vector<T> vector)
+        {
+            vector = new Vector<T>();
+            string line = "";
+            using (BinaryReader br = new BinaryReader(File.Open(path, FileMode.Open)))
+            {
+                //Set the position and length of the stream 
+                for (int pos = 0; pos < (int)br.BaseStream.Length; pos += sizeof(char))
+                {
+                    vector.Add((T)Convert.ChangeType(br.ReadChar(), typeof(T)));
+                }
+                
             }
         }
 
