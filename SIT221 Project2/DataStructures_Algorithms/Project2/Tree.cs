@@ -10,13 +10,14 @@ namespace DataStructures_Algorithms.Project2
     public enum Edge
     {
         Left,
-        Right
+        Right,
+        Empty
     }
     public class Node
     {
         public Node LeftChild { get; set; }
         public Node RightChild { get; set; }
-
+        public Node Parent { get; set; }
         /*
         *   Member Variables
         */
@@ -48,7 +49,7 @@ namespace DataStructures_Algorithms.Project2
             value = '\0';
             weight = 0;
             Visited = false;
-            
+            edge = Edge.Empty;
         }
     }
     public class Tree
@@ -83,6 +84,8 @@ namespace DataStructures_Algorithms.Project2
             Tree finalTree = new Tree(T1.root.weight + T2.root.weight);
             finalTree.root.LeftChild = T1.root;
             finalTree.root.RightChild = T2.root;
+            //  Make the FinalTree the parent of both the trees T1 and T2
+            T1.root.Parent = T2.root.Parent = finalTree.root;
             return finalTree;
         }
     }
