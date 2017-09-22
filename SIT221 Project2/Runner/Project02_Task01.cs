@@ -19,6 +19,7 @@ namespace Runner
             string inputFileName = "../../Data/Project02/" + args[0];
             string encodedFileName = "../../Data/Project02/" + args[1];
             string decodedFileName = "../../Data/Project02/" + args[2];
+            string OriginalFile = "../../Data/Project02/" + inputFileName + "'s-" + "FinalOutput" + System.IO.Path.GetExtension(inputFileName);
 
             // load input data
             Vector<char> inputData = null;
@@ -43,6 +44,9 @@ namespace Runner
 
             // write the decoded data to file
             DataSerializer<char>.SaveFinalOutput(decodedFileName, decodedData);
+
+            // Convert Decoded data to original file
+            DataSerializer<char>.GetOriginalFile(OriginalFile, decodedData);
 
             // reload the decodedData from file
             DataSerializer<char>.LoadVectorFromAnyFile(decodedFileName, ref decodedData);

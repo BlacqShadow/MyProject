@@ -18,7 +18,6 @@ namespace DataStructures_Algorithms.Project2
         private Vector<char> rawData;
         private Dictionary<char, int> charWeights;
         private Dictionary<char, string> encodingScheme;
-        private Vector<string> EncodedData;
         private Tree _HTree;
 
 
@@ -37,7 +36,7 @@ namespace DataStructures_Algorithms.Project2
         }
 
         /*
-        *   Encode the 
+        *   Use encoding scheme to get the correct bits
         */
 
         private Vector<string> GetEncodedData()
@@ -47,11 +46,7 @@ namespace DataStructures_Algorithms.Project2
             {
                 if (encodingScheme.ContainsKey(c))
                     v.Add(encodingScheme[c]);
-                //else
-                //{
-                //    //Empty Line 
-                //    v.Add("");
-                //}
+              
             }
             return v;
         }
@@ -196,11 +191,7 @@ namespace DataStructures_Algorithms.Project2
                 //if(RevEncodingScheme.ContainsKey(s))
                 if(s != null)
                     decoded.Add(RevEncodingScheme[s]);
-                //else
-                //{
-                //    // Means that it is an empty character
-                //    decoded.Add('\0');
-                //}
+                
             }
             
             return decoded;
