@@ -42,10 +42,10 @@ namespace Runner
             decodedData = coder.Decode(encodedData);
 
             // write the decoded data to file
-            DataSerializer<char>.SaveVectorToTextFile(decodedFileName, decodedData);
+            DataSerializer<char>.SaveFinalOutput(decodedFileName, decodedData);
 
             // reload the decodedData from file
-            DataSerializer<char>.LoadVectorFromTextFile(decodedFileName, ref decodedData);
+            DataSerializer<char>.LoadVectorFromAnyFile(decodedFileName, ref decodedData);
 
             // validating the coding result, i.e. checking whether inputData = decodedData
             if (inputData.Count != decodedData.Count)

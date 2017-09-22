@@ -47,8 +47,11 @@ namespace DataStructures_Algorithms.Project2
             {
                 if (encodingScheme.ContainsKey(c))
                     v.Add(encodingScheme[c]);
-                else
-                    v.Add("");
+                //else
+                //{
+                //    //Empty Line 
+                //    v.Add("");
+                //}
             }
             return v;
         }
@@ -190,8 +193,16 @@ namespace DataStructures_Algorithms.Project2
             }
             foreach(string s in input)
             {
-                decoded.Add(RevEncodingScheme[s]);
+                //if(RevEncodingScheme.ContainsKey(s))
+                if(s != null)
+                    decoded.Add(RevEncodingScheme[s]);
+                //else
+                //{
+                //    // Means that it is an empty character
+                //    decoded.Add('\0');
+                //}
             }
+            
             return decoded;
         }
     }
