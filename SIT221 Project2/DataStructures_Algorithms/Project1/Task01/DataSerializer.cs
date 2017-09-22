@@ -61,7 +61,7 @@ namespace DataStructures_Algorithms.Project1
         {
             vector = new Vector<T>();
             string line = "";
-            using (BinaryReader br = new BinaryReader(File.Open(path, FileMode.Open)))
+            using (BinaryReader br = new BinaryReader(File.Open(path, FileMode.Open), Encoding.ASCII))
             {
                 //Set the position and length of the stream 
                 for (int pos = 0; pos < (int)br.BaseStream.Length; pos += sizeof(char))
